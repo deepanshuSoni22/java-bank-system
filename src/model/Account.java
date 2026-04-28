@@ -9,6 +9,7 @@ public abstract class Account {
     private static int accNumCounter = 1000;
     private double balance;
 
+    // Constructor
     public Account(String holderName, int balance) {
         this.holderName = holderName;
         this.balance = balance;
@@ -16,6 +17,7 @@ public abstract class Account {
         this.accNumber = accNumCounter++;
     }
 
+    // deposit method
     public boolean deposit(double amount) {
         if (amount > 0) {
             this.balance += amount;
@@ -24,6 +26,7 @@ public abstract class Account {
          return false;
     }
 
+    // withdraw method
     public WithdrawStatus withdraw(double amount) {
         if (amount <= 0) {
             return WithdrawStatus.MIN_BALANCE_VIOLATION;
@@ -38,22 +41,27 @@ public abstract class Account {
         return status;
     }
 
+    // canWithDraw method
     protected abstract WithdrawStatus canWithDraw(double amount);
 
+    // displayDetails method
     public void displayDetails() {
         NumberFormat indianCurrency = NumberFormat.getCurrencyInstance(new Locale("en", "IN"));
         String balanceInRupees = indianCurrency.format(this.balance);
         System.out.printf("Holder Name: %s | Account Number: %d | Balance: %s %n", this.holderName, this.accNumber, balanceInRupees);
     }
 
+    // getter for balance
     public double getBalance() {
         return balance;
     }
 
+    // getter for account number
     public int getAccNumber() {
         return accNumber;
     }
 
+    // getter for holder name
     public String getHolderName() {
         return holderName;
     }
