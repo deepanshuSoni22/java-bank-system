@@ -10,7 +10,7 @@ public abstract class Account {
     private double balance;
 
     // Constructor
-    public Account(String holderName, int balance) {
+    public Account(String holderName, double balance) {
         this.holderName = holderName;
         this.balance = balance;
 
